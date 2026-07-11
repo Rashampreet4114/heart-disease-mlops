@@ -3,6 +3,13 @@
 End-to-end MLOps pipeline for the UCI Heart Disease dataset: EDA → feature engineering →
 model training with MLflow tracking → FastAPI serving → Docker → Kubernetes → monitoring.
 
+## Demo video
+
+<video src="https://github.com/Rashampreet4114/heart-disease-mlops/raw/main/demo/heart_disease_pipeline_demo.mp4" controls width="700">
+</video>
+
+If the video doesn't render above, [watch/download it directly](demo/heart_disease_pipeline_demo.mp4).
+
 ## Setup
 
 ```bash
@@ -82,4 +89,6 @@ tests/           pytest suite
 k8s/             deployment.yaml, service.yaml
 .github/workflows/ci.yml   lint -> test -> train CI pipeline
 screenshots/     EDA plots, confusion matrices, ROC curves, deployment evidence
+demo/            pipeline walkthrough video
+report/          final report (report.docx), architecture diagram, video script
 ```
