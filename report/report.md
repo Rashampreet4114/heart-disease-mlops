@@ -16,7 +16,7 @@ testing and CI/CD, containerization, Kubernetes deployment, and monitoring.
 **Repository:** https://github.com/Rashampreet4114/heart-disease-mlops
 
 Three models were trained and compared (Logistic Regression, Random Forest,
-and XGBoost) rather than the minimum two required. The target variable was
+and XGBoost). The target variable was
 reframed from the raw multi-class severity scale (0–4) to a binary
 disease/no-disease label, consistent with the assignment's risk-prediction
 framing. Monitoring uses a lightweight custom logging and metrics dashboard
