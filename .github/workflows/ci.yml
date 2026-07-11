@@ -33,6 +33,12 @@ jobs:
       - name: Lint with flake8
         run: flake8 src/ api/ tests/ scripts/
 
+      - name: Download dataset
+        run: python scripts/download_data.py
+
+      - name: Clean data
+        run: python -m src.data_processing
+
       - name: Run unit tests
         run: pytest tests/ -v --junitxml=test-results.xml
 
@@ -42,12 +48,6 @@ jobs:
         with:
           name: test-results
           path: test-results.xml
-
-      - name: Download dataset
-        run: python scripts/download_data.py
-
-      - name: Clean data
-        run: python -m src.data_processing
 
       - name: Train model and log to MLflow
         run: python -m src.train
