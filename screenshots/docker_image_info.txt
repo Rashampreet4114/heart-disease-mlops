@@ -1,0 +1,2 @@
+IMAGE                      ID             DISK USAGE   CONTENT SIZE   EXTRA
+heart-disease-api:latest   6b5d8efd79a6        793MB          172MB   U    

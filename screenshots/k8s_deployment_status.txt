@@ -1,0 +1,10 @@
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS          IMAGES                     SELECTOR
+deployment.apps/heart-disease-api   2/2     2            2           110s   heart-disease-api   heart-disease-api:latest   app=heart-disease-api
+
+NAME                                    READY   STATUS    RESTARTS   AGE    IP           NODE                    NOMINATED NODE   READINESS GATES
+pod/heart-disease-api-b9ccfc57f-k8zjz   1/1     Running   0          110s   10.244.0.5   desktop-control-plane   <none>           <none>
+pod/heart-disease-api-b9ccfc57f-t6x4g   1/1     Running   0          110s   10.244.0.6   desktop-control-plane   <none>           <none>
+
+NAME                                TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE     SELECTOR
+service/heart-disease-api-service   LoadBalancer   10.96.14.53   172.18.0.5    80:31363/TCP   110s    app=heart-disease-api
+service/kubernetes                  ClusterIP      10.96.0.1     <none>        443/TCP        5m37s   <none>

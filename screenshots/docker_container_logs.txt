@@ -1,0 +1,12 @@
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-07-11 14:56:01,974 INFO GET /health -> 200 (1.32ms)
+INFO:     192.168.65.1:31068 - "GET /health HTTP/1.1" 200 OK
+2026-07-11 14:56:02,167 INFO POST /predict -> 200 (167.55ms)
+INFO:     192.168.65.1:40815 - "POST /predict HTTP/1.1" 200 OK
+2026-07-11 14:56:02,207 INFO POST /predict -> 200 (9.59ms)
+INFO:     192.168.65.1:42237 - "POST /predict HTTP/1.1" 200 OK
+2026-07-11 14:56:02,226 INFO GET /metrics -> 200 (0.39ms)
+INFO:     192.168.65.1:22714 - "GET /metrics HTTP/1.1" 200 OK

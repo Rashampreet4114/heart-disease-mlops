@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+mlruns/
+mlflow.db
+*.log
+logs/
+data/raw/*.csv
+.DS_Store
+.pytest_cache/
+.coverage
+htmlcov/
