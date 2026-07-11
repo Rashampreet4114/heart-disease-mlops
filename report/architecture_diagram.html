@@ -1,0 +1,265 @@
+<style>
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --text: #1a2030;
+  --text-muted: #5b6478;
+  --amber: #c97f1e;
+  --amber-soft: #f5e4cc;
+  --teal: #1f8f81;
+  --teal-soft: #d9f0ec;
+  --border: #dde2ec;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --sans: ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1420;
+    --surface: #171d2c;
+    --surface-2: #1d2436;
+    --text: #e8ecf4;
+    --text-muted: #8b93a7;
+    --amber: #e8a33d;
+    --amber-soft: #3a2c14;
+    --teal: #4fbfb0;
+    --teal-soft: #123330;
+    --border: #2a3245;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1420;
+  --surface: #171d2c;
+  --surface-2: #1d2436;
+  --text: #e8ecf4;
+  --text-muted: #8b93a7;
+  --amber: #e8a33d;
+  --amber-soft: #3a2c14;
+  --teal: #4fbfb0;
+  --teal-soft: #123330;
+  --border: #2a3245;
+}
+:root[data-theme="light"] {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --text: #1a2030;
+  --text-muted: #5b6478;
+  --amber: #c97f1e;
+  --amber-soft: #f5e4cc;
+  --teal: #1f8f81;
+  --teal-soft: #d9f0ec;
+  --border: #dde2ec;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  padding: 48px 32px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+
+h1 {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+  text-wrap: balance;
+}
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 32px;
+}
+
+.cluster-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 18px;
+  position: relative;
+}
+.card.accent-amber { border-color: var(--amber); background: linear-gradient(180deg, var(--amber-soft), var(--surface) 60%); }
+.card.accent-teal { border-color: var(--teal); background: linear-gradient(180deg, var(--teal-soft), var(--surface) 60%); }
+
+.card .num {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.card.accent-amber .num { color: var(--amber); }
+.card.accent-teal .num { color: var(--teal); }
+
+.card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 4px 0 6px;
+  text-wrap: balance;
+}
+.card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+  line-height: 1.45;
+}
+.badges { display: flex; flex-wrap: wrap; gap: 5px; }
+.badge {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.row-arrow {
+  display: none;
+}
+@media (min-width: 720px) {
+  .grid { position: relative; }
+  .card:not(:nth-child(3n))::after {
+    content: "→";
+    position: absolute;
+    right: -13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    z-index: 1;
+    background: var(--bg);
+    width: 16px;
+    text-align: center;
+  }
+}
+
+.ecg-divider {
+  margin: 28px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ecg-divider svg { flex: 1; height: 28px; width: 100%; }
+.ecg-divider .ecg-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.legend {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+</style>
+
+<div class="wrap">
+  <h1>Heart Disease Risk Prediction — MLOps Pipeline Architecture</h1>
+  <p class="subtitle">End-to-end flow from raw UCI data to a monitored, containerized prediction service running on Kubernetes.</p>
+
+  <p class="cluster-label">Model development</p>
+  <div class="grid">
+    <div class="card">
+      <div class="num">01</div>
+      <h3>Data Acquisition</h3>
+      <p>Download UCI Heart Disease dataset (303 patients, 13 features + target).</p>
+      <div class="badges"><span class="badge">scripts/download_data.py</span><span class="badge">ucimlrepo</span></div>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <h3>EDA &amp; Cleaning</h3>
+      <p>Impute ca/thal, collapse severity 0-4 to binary target, visualize distributions.</p>
+      <div class="badges"><span class="badge">01_eda.ipynb</span><span class="badge">data_processing.py</span></div>
+    </div>
+    <div class="card accent-amber">
+      <div class="num">03</div>
+      <h3>Training &amp; Tuning</h3>
+      <p>LogReg, Random Forest, XGBoost via GridSearchCV + 5-fold stratified CV.</p>
+      <div class="badges"><span class="badge">train.py</span><span class="badge">scikit-learn</span><span class="badge">xgboost</span></div>
+    </div>
+    <div class="card">
+      <div class="num">04</div>
+      <h3>Experiment Tracking</h3>
+      <p>Log params, metrics, ROC/confusion-matrix plots and model artifacts per run.</p>
+      <div class="badges"><span class="badge">MLflow</span></div>
+    </div>
+    <div class="card">
+      <div class="num">05</div>
+      <h3>Model Packaging</h3>
+      <p>Best pipeline (preprocessor + model) serialized for reuse at inference.</p>
+      <div class="badges"><span class="badge">model.joblib</span><span class="badge">metadata.json</span></div>
+    </div>
+    <div class="card">
+      <div class="num">06</div>
+      <h3>CI/CD</h3>
+      <p>Lint → download → clean → 13 unit tests → train, on every push.</p>
+      <div class="badges"><span class="badge">GitHub Actions</span><span class="badge">pytest</span><span class="badge">flake8</span></div>
+    </div>
+  </div>
+
+  <div class="ecg-divider">
+    <span class="ecg-label">deploy</span>
+    <svg viewBox="0 0 600 28" preserveAspectRatio="none">
+      <polyline points="0,14 60,14 75,14 85,2 95,26 105,6 115,14 180,14 240,14 255,14 265,2 275,26 285,6 295,14 360,14 420,14 435,14 445,2 455,26 465,6 475,14 540,14 600,14"
+        fill="none" stroke="var(--teal)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <p class="cluster-label">Production deployment</p>
+  <div class="grid">
+    <div class="card">
+      <div class="num">07</div>
+      <h3>API &amp; Containerization</h3>
+      <p>FastAPI /predict, /health endpoints packaged into a Docker image.</p>
+      <div class="badges"><span class="badge">FastAPI</span><span class="badge">Docker</span></div>
+    </div>
+    <div class="card">
+      <div class="num">08</div>
+      <h3>Orchestration</h3>
+      <p>2 replicas behind a LoadBalancer Service on Kubernetes.</p>
+      <div class="badges"><span class="badge">Deployment</span><span class="badge">Service</span><span class="badge">Docker Desktop K8s</span></div>
+    </div>
+    <div class="card accent-teal">
+      <div class="num">09</div>
+      <h3>Monitoring</h3>
+      <p>Per-request logging, live counters, and an HTML monitoring dashboard.</p>
+      <div class="badges"><span class="badge">/metrics</span><span class="badge">/dashboard</span><span class="badge">logs/api.log</span></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--amber)"></span> Model selection pivot (best of 3 models by test ROC-AUC)</span>
+    <span><span class="dot" style="background:var(--teal)"></span> Live/runtime signal path</span>
+  </div>
+</div>
